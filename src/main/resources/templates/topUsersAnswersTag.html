@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Top users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div th:fragment="topUsersPage" class="snippet-hidden align-self-start" id="topUsersPage">
+
+    <!-- HEADER START-->
+    <div th:fragment="header">
+        <nav class="navbar navbar-expand-sm  navbar-dark bg-dark text-white">
+            <div class="collapse navbar-collapse " id=upNavBar>
+                <a href="/logout" class="btn btn-primary">LOGOUT</a>
+            </div>
+
+            <input class="form-control mr-sm-2 w-25 p-3" type="search" placeholder="Search" aria-label="Search">
+            <input type="button" class="btn btn-primary" value="Мой профиль"/>
+        </nav>
+    </div>
+    <!-- HEADER FINISH-->
+
+    <div class="Page">
+        <div class="row">
+            <div class="left-sidebar col-md-2">
+                <div id="left-sidebar" data-is-here-when="md lg" class="col-2" >
+                    <div th:fragment="sidebar">
+                        <div id="sidebar" >
+                            <div class="nav-col btn-group-vertical  btn-block mr-0">
+                                <a class="nav-link-menu" href="/site"><button type="button" class="btn  btn-sm  tablinks" id="mainPageLink"  onclick="openContent(id, 'mainPage')">
+                                    Главная</button></a>
+                                <a class="nav-link-menu" href="/questionAria"><button type="button" class="btn btn-sm tablinks" id="areaQuestionLink" onclick="openContent(id, 'areaQuestion'),
+                 new PaginationQuestion(1, 10).setQuestions()">Вопросы</button></a>
+                                <a class="nav-link-menu" href="/tagsAria"><button type="button" class="btn  btn-sm tablinks" id="areaTagLink" onclick="openContent(id, 'areaTag'),
+                new PaginationTag(1, 12, 'popular').writeTags()">Метки</button></a>
+                                <a class="nav-link-menu" href="/users"><button type="button" class="btn  btn-sm tablinks" id="areaUsersLink" onclick="openContent(id, 'areaUsers'), new PaginationUser(1,20,'week').writeUsers()">
+                                    Участники</button></a>
+                                <a class="nav-link-menu" href="/unansweredAria"><button type="button" class="btn  btn-sm tablinks" id="areaUnansweredLink" onclick="openContent(id, 'areaUnanswered')">Неотвеченные</button></a>
+                                <a class="nav-link-menu" href="/chat"><button type="button" class="btn  btn-sm  tablinks" id="chatLink">Чат</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="MainContent col-7">
+                <div class="top-users-page-header">
+                    <h6>
+                        Лучшие авторы ответов с меткой
+                        <button type="button" class="btn  btn-sm   active ">тэг 1</button>
+                    </h6>
+                </div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="left-side-user-information col-3">
+                            <div id="left-side-bar-user-info" class="row">
+                                <div class="user-rating-tag-answer col-2" title="общий рейтинг">
+                                    <span class="rating-card-info" >
+                                        100
+                                    </span>
+                                </div>
+                                <div class="user-tag-answer col-2" title="опубликовано ответов">
+                                    <a href="#" class="answer-count-user-info" >
+                                        70
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-content-information">
+                            <div id="user-main-info-line" class="row">
+                                <div class="user-avatar">
+                                    <img src="/someth" class="avatar">
+                                </div>
+                                <div class="user-personal-info ">
+                                    <a href="#">User 1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="left-side-user-information col-3">
+                            <div id="left-side-bar-user-second-info" class="row">
+                                <div class="user-rating-tag-answer col-2" title="общий рейтинг">
+                                    <span class="rating-card-info" >
+                                        90
+                                    </span>
+                                </div>
+                                <div class="user-tag-answer col-2" title="опубликовано ответов">
+                                    <a href="#" class="answer-count-user-info" >
+                                        60
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-content-information">
+                            <div id="user-second-main-info-line" class="row">
+                                <div class="user-avatar">
+                                    <img src="/someth" class="avatar">
+                                </div>
+                                <div class="user-personal-info ">
+                                    <a href="#">User 2</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="left-side-user-information col-3">
+                            <div id="left-side-bar-user-third-info" class="row">
+                                <div class="user-rating-tag-answer col-2" title="общий рейтинг">
+                                    <span class="rating-card-info" >
+                                        80
+                                    </span>
+                                </div>
+                                <div class="user-tag-answer col-2" title="опубликовано ответов">
+                                    <a href="#" class="answer-count-user-info" >
+                                        50
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-content-information">
+                            <div id="user-third-main-info-line" class="row">
+                                <div class="user-avatar">
+                                    <img src="#" class="avatar">
+                                </div>
+                                <div class="user-personal-info">
+                                    <a href="#">User 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

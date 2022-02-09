@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div th:fragment="userPage" class="snippet-hidden align-self-start" id="userPage">
+
+        <!-- HEADER START-->
+        <div th:insert="~{fragment/header :: header}" class="nav-link-menu"></div>
+        <!--HEADER FINISH-->
+        <div class="Page">
+            <div class="row">
+                <div class="left-sidebar col-md-2">
+                    <div id="left-sidebar" data-is-here-when="md lg" class="col-2" >
+                        <div th:fragment="sidebar">
+                            <div id="sidebar" >
+                                <div class="nav-col btn-group-vertical  btn-block mr-0">
+                                    <a class="nav-link-menu" href="/site"><button type="button" class="btn  btn-sm  tablinks" id="mainPageLink"  onclick="openContent(id, 'mainPage')">
+                                        Главная</button></a>
+                                    <a class="nav-link-menu" href="/questionAria"><button type="button" class="btn btn-sm tablinks" id="areaQuestionLink" onclick="openContent(id, 'areaQuestion'),
+                 new PaginationQuestion(1, 10).setQuestions()">Вопросы</button></a>
+                                    <a class="nav-link-menu" href="/tagsAria"><button type="button" class="btn  btn-sm tablinks" id="areaTagLink" onclick="openContent(id, 'areaTag'),
+                new PaginationTag(1, 12, 'popular').writeTags()">Метки</button></a>
+                                    <a class="nav-link-menu" href="/users"><button type="button" class="btn  btn-sm tablinks" id="areaUsersLink" onclick="openContent(id, 'areaUsers'), new PaginationUser(1,20,'week').writeUsers()">
+                                        Участники</button></a>
+                                    <a class="nav-link-menu" href="/unansweredAria"><button type="button" class="btn  btn-sm tablinks" id="areaUnansweredLink" onclick="openContent(id, 'areaUnanswered')">Неотвеченные</button></a>
+                                    <a class="nav-link-menu" href="/chat"><button type="button" class="btn  btn-sm  tablinks" id="chatLink">Чат</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content col-10">
+                    <!--MAINBAR START-->
+                    <div id="mainbar-full" class="user-show-new">
+                        <div class="grid ai-center jc-space-between mb16 js-user-header">
+                            <div class="grid--cell s-navigation" id="mainBar">
+                                <a href="/users" class="s-navigation--item is-selected" data-shortcut="P">Профиль
+                                </a>
+                                <a href="/users" class="s-navigation--item" data-shortcut="A">Активность
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--MAINBAR FINISH-->
+
+                    <!--USER-CARD START-->
+                    <div class="row user-information">
+
+                        <div class="card">
+                            <div class="avatar" id="userAvatar">
+
+                            </div>
+                            <div class="card-body">
+                                <div class="reputation">
+                                    <div class="row">
+                                        <div  class="reputation-number">
+
+                                        </div>
+                                        <div class="reputation-header fs-fine fc-light tt-uppercase">
+                                            репутация
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="info-name-profile-user-about col-6">
+                            <div class="profile-user-name">
+                                <h2 class="profile-user-name">
+                                    <div class="name" id="name">
+
+                                    </div>
+                                </h2>
+                            </div>
+                            <div class="user-info-about col-md-5" id="userInfoAbout">
+                                <p>
+                                    "Тестовая заметка"
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="user-stats-about">
+                            <div class="row">
+                                <div class="answers-info-about col-4">
+                                    <div class="grid fd-column">
+                                        <div style="text-align: center"; class="grid--cell fs-body3 fc-dark fw-bold">
+                                            Ответов:
+                                        </div>
+                                        <div style="text-align: center"; class="grid--cell" id="countAnswers">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4"></div>
+
+                                <div class="question-info-about col-4">
+                                    <div class="grid fd-column">
+                                        <div style="text-align: center"; class="grid--cell fs-body3 fc-dark fw-bold">
+                                            Вопросов:
+                                        </div>
+                                        <div style="text-align: center"; class="grid--cell" id="countQuestions">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="user-profile-detail-info">
+                                <div class="user-profile-info">
+                                    <ul class="list-reset grid gs8 gsy fd-column fc-medium">
+                                        <li class="grid--cell ow-break-word">
+                                            <div class="grid gs8 gsx ai-center" id="city">
+
+                                            </div>
+                                        </li>
+
+                                        <!--                                        <li class="grid&#45;&#45;cell ow-break-word">-->
+                                        <!--                                            <div class="grid gs8 gsx ai-center">-->
+                                        <!--                                                <div class="grid&#45;&#45;cell fl1">Последнее посещение</div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </li>-->
+
+                                        <!--                                        <li class="grid&#45;&#45;cell ow-break-word">-->
+                                        <!--                                            <div class="grid gs8 gsx ai-center">-->
+                                        <!--                                                <div class="grid&#45;&#45;cell fl1">Просмотров</div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </li>-->
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--USER-CARD FINISH-->
+
+                    </div>
+
+                    <div class="user-profile-activity">
+                        <div class="row">
+                            <!--  <div class="user-profile-tags">
+                                <div class="tags-list">
+
+                                    <div class="tags-table">
+                                        <div class="card tag-tracked-container">
+                                            <div class="card-header" >
+                                                <span style="font-size: 120%">Теги</span>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul id="best-messages">
+
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div> -->
+
+                            <div class="user-profile-message col-7">
+                                <div class="nav-col btn-group  btn-block mr-0 col-3">
+                                    <button type="button" class="btn  btn-sm   active " href="#" onclick="">Сводка</button>
+                                    <button type="button" class="btn btn-sm" href="#" onclick="">Ответы</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Вопросы</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Метки</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Знаки</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Закладки</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Отслеживаемые</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Конкурсные</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Репутация</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Все действия</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Реакции</button>
+                                    <button type="button" class="btn  btn-sm " href="#" onclick="">Голоса</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="first-row-table-user-info" class="row">
+                            <div class="answers-user-about-table col-5">
+                                <div class="table-header">
+                                    <div id="header-table-row-answer" class="row">
+                                        <h5 class="answer-table-header col-md-5">
+                                            <a href="/users">
+                                                Ответы
+                                            </a>
+                                        </h5>
+                                        <div class="nav-col btn-group  btn-block col-md-3 col-md-offset-3">
+                                            <button type="button" class="btn  btn-sm   active " href="#" onclick="">Голоса</button>
+                                            <button type="button" class="btn btn-sm" href="#" onclick="">Активность</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Новые</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="answer-all" style= "min-height:50px">
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="voices1"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="answer1"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center h-100">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="voices2"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-1" id="answer2"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="voices3"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-1" id="answer3"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <div class="answer-table-footer">
+                                    <a href="users/" id="answersMore">
+                                        <h7> Показать еще -></h7>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="reputation-user-about-table col-6 col-offset-6">
+                                <div class="table-header">
+                                    <div id="header-table-row" class="row">
+                                        <h5 class="answer-table-header col-2">
+                                            <a href="/users">
+                                                Репутация
+                                            </a>
+                                        </h5>
+
+                                    </div>
+                                </div>
+                                <div class="table-reputation-user" style= "min-height:50px">
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="countRep1"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="reasonRep1"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="countRep2"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="reasonRep2"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="countRep3"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="reasonRep3"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <div class="answer-table-footer">
+                                    <a href="users/" id="reputationMore">
+                                        <h7> Показать еще -></h7>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="second-row-table-user-info" class="row">
+                            <div class="question-user-about-table col-5">
+                                <div class="table-header">
+                                    <div id="headers-tables-row" class="row">
+                                        <h5 class="answer-table-header col-5">
+                                            <a href="/users">
+                                                Вопросы
+                                            </a>
+                                        </h5>
+                                        <div class="nav-col btn-group  btn-block col-4">
+                                            <button type="button" class="btn  btn-sm   active " href="#" onclick="">Голоса</button>
+                                            <button type="button" class="btn btn-sm" href="#" onclick="">Активность</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Новые</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="questions-all" style= "min-height:50px">
+                                    <a href="#" class="list-group-item list-group-item-action" id="questionLink1">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="voicesQ1"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="question1"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" id="questionLink2">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="voicesQ2"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-1" id="question2"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" id="questionLink3">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="voicesQ3"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-1" id="question3"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="question-table-footer">
+                                    <a href="users/" id="questionMore">
+                                        <h7> Показать еще -></h7>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="tags-user-about-table col-6">
+                                <div class="table-header">
+                                    <div id="header-tag-table-row" class="row">
+                                        <h5 class="answer-table-header col-2">
+                                            <a href="/users">
+                                                Метки
+                                            </a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="tags-all" style= "min-height:50px">
+
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-10">
+                                                <div class="nav-col btn-group  btn-block mr-0   " id="tags">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <div class="question-table-footer">
+                                    <a href="users/" id="tagsMore">
+                                        <h7> Показать еще -></h7>
+
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="third-row-table-user-info" class="row">
+                            <div class="following-message-user-about-table col-5">
+                                <div class="following-message-table-header">
+                                    <div id="following-message-headers-tables-row" class="row">
+                                        <h6 class="message-table-header col-3">
+                                            <a href="/users">
+                                                Отслеживаемые
+                                            </a>
+                                        </h6>
+                                        <div class="nav-col btn-group  btn-block col-3">
+                                            <button type="button" class="btn  btn-sm   active " href="#" onclick="">Голоса</button>
+                                            <button type="button" class="btn btn-sm" href="#" onclick="">Активность</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Новые</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Добавлены</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="following-message-all" style= "min-height:50px">
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;">0 <br /> голосов</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2">Какое-то сообщение1</h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;">0 <br /> голосов</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2">Какое-то сообщение2</h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;">0 <br /> голосов</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2">Какое-то сообщение3</h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+                                <div class="following-table-footer">
+                                    <a href="users/">
+                                        <h7> Показать еще -></h7>
+
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="bookmarks-user-about-table col-6">
+                                <div class="bookmarks-table-header">
+                                    <div id="bookmarks-headers-tables-row" class="row">
+                                        <h5 class="message-table-header col-2">
+                                            <a href="/users">
+                                                Закладки
+                                            </a>
+                                        </h5>
+                                        <div class="nav-col btn-group  btn-block col-2">
+                                            <button type="button" class="btn  btn-sm   active " href="#" onclick="">Голоса</button>
+                                            <button type="button" class="btn btn-sm" href="#" onclick="">Активность</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Новые</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Просмотры</button>
+                                            <button type="button" class="btn  btn-sm " href="#" onclick="">Добавлены</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="bookmarks-all" style= "min-height:50px">
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="bmVotes1"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="bmQuestion1"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block; " id="bmVotes2"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="bmQuestion2"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action ">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-2 mx-auto">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="text-align: center;">
+                                                            <small style="display: inline-block;" id="bmVotes3"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 href="#" class="mb-2" id="bmQuestion3"></h6>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <div class="bookmarks-table-footer">
+                                    <a href="users/" id="bookmarksMore">
+                                        <h7> Показать еще -></h7>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <script src="/static/js/fillProfile.js"></script>
+</body>
+</html>

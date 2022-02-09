@@ -1,0 +1,15 @@
+comment:
+
+  - id: 10
+    comment_type: 1
+    last_redaction_date: "2020-01-02 13:58:56"
+    persist_date: "2020-01-02"
+    text: "Example text"
+    user_id: 1
+
+  - id: 11
+    comment_type: 0
+    last_redaction_date: "2020-01-02 13:58:56"
+    persist_date: "2020-01-02"
+    text: "Example text"
+    user_id: 1

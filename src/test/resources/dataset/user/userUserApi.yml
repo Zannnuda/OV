@@ -1,0 +1,79 @@
+user_entity:
+  - id: 1
+    full_name: "Teat"
+    about: "description 1"
+    email: "ivanov@mail.ru"
+    password: "2020-04-04"
+    image_link: "linkImage1"
+    is_enabled: 1
+    last_redaction_date: "2020-05-28 13:58:56"
+    persist_date: "2020-05-28 13:58:56"
+    role_id: 1
+
+  - id: 2
+    full_name: "Teat"
+    email: "2020-04-04"
+    password: "2020-04-05"
+    about: "description 2"
+    image_link: "linkImage2"
+    is_enabled: 1
+    last_redaction_date: "2020-05-28 13:58:56"
+    persist_date: "2020-05-28 13:58:56"
+    role_id: 1
+
+
+  - id: 3
+    full_name: "Bob"
+    email: "2020-04-04"
+    password: "2020-04-04"
+    about: "description 2"
+    image_link: "linkImage3"
+    is_enabled: 1
+    last_redaction_date: "2020-05-28 13:58:56"
+    persist_date: "2020-05-28 13:58:56"
+    role_id: 1
+
+
+  - id: 4
+    full_name: "Tob"
+    email: "2020-04-04"
+    password: "2020-04-04"
+    about: "description 2"
+    image_link: "linkImage4"
+    is_enabled: 1
+    last_redaction_date: "2020-05-28 13:58:56"
+    persist_date: "2020-05-28 13:58:56"
+    role_id: 1
+
+reputation:
+  - id: 1
+    persist_date: "2021-02-20 21:22:13"
+    author_id: 1
+    count: 2
+    type: 0
+#    question: 1
+#    answer: null
+
+  - id: 2
+    persist_date: "2021-02-20 21:22:13"
+    author_id: 2
+    count: 1
+    type: 1
+#    question: null
+#    answer: 1
+
+  - id: 3
+    persist_date: "2021-02-20 21:22:13"
+    author_id: 3
+    count: 2
+    type: 2
+#    question: null
+#    answer: 2
+
+  - id: 4
+    persist_date: "2021-02-20 21:22:13"
+    author_id: 4
+    count: 4
+    type: 3
+#    question: 2
+#    answer: null

@@ -1,0 +1,6 @@
+votes_on_answers:
+  - id: 4
+    answer_id: 20
+    user_id: 1
+    vote: 1
+    persist_date: "2021-02-06 14:00:00"

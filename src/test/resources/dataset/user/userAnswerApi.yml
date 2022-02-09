@@ -1,0 +1,71 @@
+user_entity:
+  - email: "principal@mail.ru"
+    password: "$2a$10$G.l/LUSaCNeNK3d5Bhm2KOJLF8aFynLFxiKirvrcJHwveXmcAXQcy"
+    about: "description 1"
+    full_name: "Teat"
+    is_enabled: 1
+    is_deleted: 0
+    last_redaction_date: "2020-05-28 13:58:56"
+    persist_date: "2020-05-28 13:58:56"
+    image_link: "https://www.google.com/search?q=D0"
+    role_id: 1
+    id: 153  # <-- User Principal
+
+question:
+  - id: 1
+    description: "some description for first question"
+    title: "Question number one"
+    user_id: 1
+    persist_date: "2020-10-25 13:58:56"
+    is_deleted: false
+    last_redaction_date: "2020-01-02 13:58:56"
+
+  - id: 2
+    description: "some description for second question"
+    title: "Question number two"
+    user_id: 1
+    persist_date: "2020-10-25 13:58:56"
+    is_deleted: false
+    last_redaction_date: "2020-01-02 13:58:56"
+
+  - id: 3
+    description: "some description for third question"
+    title: "Question number three"
+    user_id: 1
+    persist_date: "2020-10-25 13:58:56"
+    is_deleted: false
+    last_redaction_date: "2020-01-02 13:58:56"
+
+answer:
+  - id: 14
+    html_body: "This is answer for question number one"
+    is_helpful: 0
+    question_id: 1
+    user_id: 153
+    persist_date: "2020-01-01 13:58:56"
+    is_deleted: false
+    is_deleted_by_moderator: true
+    update_date: "2020-01-01 13:58:56"
+    date_accept_time: "2020-01-01 13:58:56"
+
+  - id: 20
+    html_body: "This is answer for question number two"
+    is_helpful: 0
+    question_id: 2
+    user_id: 153
+    persist_date: "2020-01-01 13:58:56"
+    is_deleted: false
+    is_deleted_by_moderator: false
+    update_date: "2020-01-01 13:58:56"
+    date_accept_time: "2020-01-01 13:58:56"
+
+  - id: 30
+    html_body: "This is answer for question number three"
+    is_helpful: 0
+    question_id: 3
+    user_id: 153
+    persist_date: "2020-01-01 13:58:56"
+    is_deleted: false
+    is_deleted_by_moderator: false
+    update_date: "2020-01-01 13:58:56"
+    date_accept_time: "2020-01-01 13:58:56"

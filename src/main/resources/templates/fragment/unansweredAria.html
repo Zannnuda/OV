@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="unansweredAria" class="snippet-hidden align-self-start" id="unansweredAria">
+    <div class="row p-4">
+        <div class="col-xl-8 col-lg-8  col-md-12 col-sm-12">
+        <div class="row m-2">
+            <div class="col-sm-10">
+                <h2 class="page-title">Неотвеченные вопросы</h2>
+            </div>
+            <div class="col-sm-2 d-flex align-items-end d-flex justify-content-end">
+                <a type="button" class="btn btn-primary float-right" href="/ask" id="askQuest">Задать вопрос</a>
+            </div>
+        </div>
+
+        <div class="info-block-page">
+            <div class="row">
+                <div class="inline-block ml-sm-2">
+                    <div id="totalResultCountView">
+                    </div>
+                    <div class="nav-col btn-group  btn-block mr-0">
+                        <button type="button" class="btn  btn-sm active" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'tracked').writeQuestionWithoutAnswer()">С отслеживаемыми метками</button>
+                        <button type="button" class="btn  btn-sm active" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'new').writeQuestionWithoutAnswer()">Новые</button>
+                        <button type="button" class="btn  btn-sm active" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'votes').writeQuestionWithoutAnswer()">Голоса</button>
+                        <button type="button" class="btn  btn-sm active" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'noAnyAnswer').writeQuestionWithoutAnswer()">Без единого ответа</button>
+                        <!--                        <div class="menu-element"><a class="menu-element-link menu-element-link__border active" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'tracked').writeQuestionWithoutAnswer()">С отслеживаемыми метками</a></div>-->
+                        <!--                        <div class="menu-element"><a class="menu-element-link menu-element-link__border" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'new').writeQuestionWithoutAnswer()">Новые</a></div>-->
+                        <!--                        <div class="menu-element"><a class="menu-element-link menu-element-link__border" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'votes').writeQuestionWithoutAnswer()">Голоса</a></div>-->
+                        <!--                        <div class="menu-element"><a class="menu-element-link menu-element-link__border" href="#" onclick="new PaginationQuestionWithoutAnswer(1,10, 'noAnyAnswer').writeQuestionWithoutAnswer()">Без единого ответа</a></div>-->
+                    </div>
+
+
+
+                    <div>
+                        <div>
+                            <div class="questionWithoutAnswers"></div>
+                            <!--First Card-->
+                            <div class="question-stats-container"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div class="row-md-4 col-sm-4">
+            <div class="tag-tracked-ignore-container">
+                <div class="card tag-tracked-container">
+                    <div class="card-header" >
+                        <span style="font-size: 120%">Отслеживаемые метки</span>
+                    </div>
+                    <div class="card-body">
+                        <ul id = "list-tracked-tag-question-area">
+
+                        </ul>
+                        <div id="error-tracked-tag-unansweredQuestion-area" class="alert alert-danger error" style="display: none">
+                            Вы попытались добавить тэг добавленный ранее, либо тэг с таким именем не существует
+                        </div>
+                        <onsubmit >
+                            <div align="center">
+                                <input type="text" id="add-tracked-tag-unansweredQuestion-area"  size="20"  placeholder="добавить метку">
+                                <button class="btn btn-primary" id="button-add-tracked-tag-question-area">+</button>
+                            </div>
+                        </onsubmit >
+                    </div>
+                </div>
+                <div class="card tag-ignore-container" >
+                    <div class = "card-header">
+                        <span style="font-size: 120%">Игнорируемые метки </span>
+                    </div>
+                    <div class="card-body">
+                        <ul id = "list-ignored-tag-question-area">
+
+                        </ul>
+                        <div id="error-ignored-tag-question-area" class="alert alert-danger error" style="display: none">
+                            Вы попытались добавить тэг добавленный ранее, либо тэг с таким именем не существует
+                        </div>
+                        <onsubmit >
+                            <div align="center">
+                                <input type="text" id="add-ignored-tag-unansweredQuestion-area"  size="20"  placeholder="добавить метку">
+                                <button class="btn btn-primary" id="button-add-ignored-tag-unansweredQuestion-area">+</button>
+                            </div>
+                        </onsubmit >
+                    </div>
+                </div>
+            </div>
+            <table class="table" id="mainCountTag">
+                <thead>
+                <tr>
+                    <th><h4 id="h4Tag">Недавние метки</h4></th>
+                </tr>
+                </thead>
+                <tbody id="questionTag">
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            <div class="pagination-wrapper">
+                <nav>
+                    <ul class="pagination-element questionWithoutAnswerPagination">
+                        <li class=" page-item-element"><a class="page-element-link" href="#">Previous</a></li>
+                        <li class=" page-item-element active"><a class="page-element-link" href="#">1</a></li>
+                        <li class=" page-item-element"><a class="page-element-link" href="#">2</a></li>
+                        <li class=" page-item-element"><a class="page-element-link" href="#">3</a></li>
+                        <li class=" page-item-element"><a class="page-element-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+<!--        <div class="col-sm-3 d-flex justify-content-end">-->
+<!--            <div class="pagination-page-count">-->
+<!--                <nav>-->
+<!--                    <ul class="pagination-element">-->
+<!--                        <li class=" page-item-element active"><a class="page-element-link" href="#">10</a></li>-->
+<!--                        <li class=" page-item-element"><a class="page-element-link" href="#">30</a></li>-->
+<!--                        <li class=" page-item-element"><a class="page-element-link" href="#">50</a></li>-->
+<!--                        <li class=" page-item-element"><a class="page-element-link" href="#">75</a></li>-->
+<!--                        <li class=" page-item-element"><a class="page-element-link" href="#">100</a></li>-->
+<!--                    </ul>-->
+<!--                    <span class="page-number">на странице</span>-->
+<!--                </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+
+    </div>
+    <div th:fragment="styleheader">
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <!--// говорим системе что нужно считывать плотность пикселей устройства
+        // и при необходимости делать шрифт крупней-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <!--// Подключаем собственно стили  bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+              crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/static/css/sidebar.css">
+        <link rel="stylesheet" href="/static/css/unanswered.css">
+    </div>
+
+</div>
+
+</body>
+</html>

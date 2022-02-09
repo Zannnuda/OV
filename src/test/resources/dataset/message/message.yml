@@ -1,0 +1,56 @@
+message:
+  - id: 1
+    #    count_valuable: 1
+    last_redaction_date: "2020-01-02 13:58:56"
+    message: "Text group message 1"
+    persist_date: "2020-10-25 13:58:56"
+    chat_id: 1
+    user_sender_id: 1
+
+  - id: 2
+    #    count_valuable: 2
+    last_redaction_date: "2020-01-02 13:58:57"
+    message: "Text group message 2"
+    persist_date: "2020-10-25 13:58:57"
+    chat_id: 2
+    user_sender_id: 2
+
+  - id: 3
+    #    count_valuable: 3
+    last_redaction_date: "2020-01-02 13:58:57"
+    message: "Text group message 3"
+    persist_date: "2020-10-25 13:58:57"
+    chat_id: 4
+    user_sender_id: 2
+
+  - id: 4
+    #    count_valuable: 4
+    last_redaction_date: "2020-01-02 13:58:59"
+    message: "Text group message 4"
+    persist_date: "2020-10-25 13:58:59"
+    chat_id: 4
+    user_sender_id: 4
+
+  - id: 5
+    #    count_valuable: 5
+    last_redaction_date: "2020-01-02 13:58:55"
+    message: "Text group message 4"
+    persist_date: "2020-10-25 13:58:55"
+    chat_id: 2
+    user_sender_id: 1
+
+  - id: 6
+    #    count_valuable: 6
+    last_redaction_date: "2020-01-02 13:58:54"
+    message: "Text group message 4"
+    persist_date: "2020-10-25 13:58:54"
+    chat_id: 7
+    user_sender_id: 5
+
+  - id: 7
+    #    count_valuable: 7
+    last_redaction_date: "2020-01-02 13:58:53"
+    message: "Text group message 4"
+    persist_date: "2020-10-25 13:58:53"
+    chat_id: 7
+    user_sender_id: 6

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="~{fragment/generalFragments :: styleheader}" class="nav-link-menu" ></div>
+</head>
+<body>
+    <div th:insert="~{fragment/header :: header}" class="nav-link-menu" ></div>
+
+    <div class="container-fluid pt-5 pb-5">
+        <div class="row">
+            <div th:insert="~{fragment/sidebar :: sidebar}" id="sidebarArea" class="col-3" style="min-height: auto"></div>
+            <form class="form-edit-profile col-4 offset-1" name="form-edit-profile">
+                <div class="input-group mb-3">
+                    <span class="form-control user-id"></span>
+                    <span class="input-group-text">ID</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="fullName" class="form-control" placeholder="Иван Иванов">
+                    <span class="input-group-text">Полное имя</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="nickname" class="form-control" placeholder="nickname">
+                    <span class="input-group-text">Nickname</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="linkImage" class="form-control" placeholder="linkImage">
+                    <span class="input-group-text">Аватарка</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="city" class="form-control" placeholder="Москва">
+                    <span class="input-group-text">Город</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="linkGitHub" class="form-control" placeholder="http://github.com">
+                    <span class="input-group-text">Профиль GitHub</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="linkVk" class="form-control" placeholder="http://vk.com">
+                    <span class="input-group-text">Профиль VK</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="linkSite" class="form-control" placeholder="http://site.ru">
+                    <span class="input-group-text">Мой сайт</span>
+                </div>
+                <div class="input-group">
+                    <textarea class="form-control" name="about"></textarea>
+                    <span class="input-group-text">Обо мне</span>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Сохранить</button>
+
+            </form>
+            <div class="right-side col-3"></div>
+        </div>
+    </div>
+
+
+    <div th:insert="fragment/searchHelp :: searchHelp"></div>
+    <div th:insert="~{fragment/footer :: footer}" ></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" defer></script>
+    <script src="/static/js/edit-profile.js"></script>
+</body>
+</html>
